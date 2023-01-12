@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}
+    lista de productos
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align: center;"> Productos Disponibles</h1>
+    
+    <br>
+    <br>
+    {% for product in productos %}
+    <div class="card" style= "width: 18rem;">
+        <img src="https://http2.mlstatic.com/D_NQ_NP_833028-MLA50984051422_082022-O.webp" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{product.name}}</h5>
+            <p class="card-text"> 
+                Precio: {{product.price}}
+                <br>
+                {% if product.stock == True %}
+                <p>Stock disponible</p>
+            {% else %}
+                <p>Actualmente, nos quedamos sin stock</p>
+            {% endif %}
+                <br>
+            </p>
+            <a href="/Ordenes/" class="btn btn-primary">Comprar</a>
+        </div>
+    </div>
+    <br>
+
+    {% endfor %}
+
+
+
+
+
+
+
+{% endblock %}
