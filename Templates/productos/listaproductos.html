@@ -10,21 +10,28 @@
     <br>
     <br>
     {% for product in productos %}
-    <div class="card" style= "width: 18rem;">
-        <img src="https://http2.mlstatic.com/D_NQ_NP_833028-MLA50984051422_082022-O.webp" class="card-img-top" alt="...">
+    <div class="card" style=  "width: 18rem; justify-content: center; left: 450px; width: 400px;">
+        <img src="{{produc.image.url}}" class="card-img-top" alt="...">
         <div class="card-body">
             <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text"> 
-                Precio: {{product.price}}
-                <br>
-                {% if product.stock == True %}
-                <p>Stock disponible</p>
+            {% if request.user.is_authenticated %}
+                <p class="card-text"> 
+                    Precio: {{product.price}}</p>
             {% else %}
-                <p>Actualmente, nos quedamos sin stock</p>
+                <p class="card-text">inicie sesion para ver el precio 
+                    <br>
             {% endif %}
-                <br>
+            {% if product.stock == True %}
+                    <p>Stock disponible</p>
+            {% else %}
+                    <p>Actualmente, nos quedamos sin stock</p>
+            {% endif %}
+                    <br>
             </p>
-            <a href="/Ordenes/" class="btn btn-primary">Comprar</a>
+            {% if request.user.is_authenticated %}
+            <a href="/compra/" class="btn btn-primary">Comprar</a>
+            <a href="" class="btn btn-danger">Borrar</a>
+            {% endif %}
         </div>
     </div>
     <br>

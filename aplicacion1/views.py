@@ -4,6 +4,9 @@ from django.http import HttpResponse
 from aplicacion1.models import Creacion
 from aplicacion1.forms import formproduct
 
+
+
+
 def creacion_producto(request):
     if request.method == "GET":
         context = {
@@ -16,9 +19,10 @@ def creacion_producto(request):
         form = formproduct(request.POST)
         if form.is_valid():
             Creacion.objects.create(
-                Nombre = form.cleaned_data["name"],
-                Precio = form.cleaned_data["price"],          
-                Stock = form.cleaned_data["stock"]
+                name = form.cleaned_data["name"],
+                price = form.cleaned_data["price"],          
+                stock = form.cleaned_data["stock"],
+                image = form.cleaned_data["image"],
             )
             context = {
                 "message": "Producto creado exitosamente"

@@ -27,9 +27,29 @@
                     <li class="nav-item active">
                         <a class="nav-link" href="/Vende tu producto/">vende tu producto </a>
                     </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/nosotros/">Mas sobre nosotros </a>
+                    <li class="nav-item active" style="margin-right: 220px;" >
+                        <a class="nav-link" href="/nosotros/">Sobre nosotros </a>
                     </li>
+                    {% if request.user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Logout/">Logout </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Update/">{{request.user.username}} </a>
+                    </li>
+                        {% if request.user.profile.profile_image.url != '' %}
+                            <img src="{{request.user.profile.profile_image.url}}" alt="profile_picture" width="50px" height="50px"
+                            ;>
+                        {% endif %}
+                    {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Login/">Login </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Singup/">Singup </a>
+                    </li>
+
+                    {% endif %}
                     
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="#">Action</a>
@@ -55,23 +75,19 @@
 
 
     <footer class="bg-dark text-center text-white" style="margin-top:600px;">
-        <!-- Grid container -->
         <div class="container p-4">
-        <!-- Section: Social media -->
         <section class="mb-4">
-            <!-- Facebook -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-facebook-f"></i
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.facebook.com/pablo.ruizdiaz.73/" role="button"
+            ><i class="fab fa-facebook-f">facebook</i
             ></a>
     
-            <!-- Twitter -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-twitter"></i
+            <a class="btn btn-outline-light btn-floating m-1" href="https://www.instagram.com/ruizdiazpablo_/" role="button"
+            ><i class="fab fa-twitter">Instagram</i
             ></a>
     
             <!-- Google -->
-            <a class="btn btn-outline-light btn-floating m-1" href="#!" role="button"
-            ><i class="fab fa-google"></i
+            <a class="btn btn-outline-light btn-floating m-1" href="https://twitter.com/RuizDiazPablo15 " role="button"
+            ><i class="fab fa-google">Twitter</i
             ></a>
 
 

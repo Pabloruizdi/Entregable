@@ -14,11 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
-
+from django.urls import path
 from Proyectofinal.views import Index, Nosotros, Vende
 from aplicacion1.views import creacion_producto, lista_productos
-from compras.views import creacion_orden
+from ventas.views import creacion_orden
+from users.views import login_user, register, update_user, update_profile
+from django.contrib.auth.views import LogoutView
+from Proyectofinal.settings import MEDIA_ROOT, MEDIA_URL
+from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -27,7 +31,14 @@ urlpatterns = [
     path("nosotros/",Nosotros ),
     path("creacionproducto/", creacion_producto),
     path("Lista-Productos/", lista_productos),
-    path("Ordenes/", creacion_orden),
-    path("Vende tu producto/", Vende )
+    path("Vende tu producto/", Vende ),
+    path("compra/", creacion_orden ),
+    path("Login/", login_user, name="login"),
+    path("Logout/", LogoutView.as_view(template_name="users/logout.html" )),
+    path("Singup/", register),
+    path("Update/", update_user),
+    path("Update_Profile/", update_profile),
+
     
-]
+] + static(MEDIA_URL, document_root = MEDIA_ROOT)
+
