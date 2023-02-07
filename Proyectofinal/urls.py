@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from Proyectofinal.views import Index, Nosotros, Vende
-from aplicacion1.views import creacion_producto, lista_productos
+from aplicacion1.views import creacion_producto, lista_productos, update_product, ProductDeleteView
 from ventas.views import creacion_orden
 from users.views import login_user, register, update_user, update_profile
 from django.contrib.auth.views import LogoutView
@@ -38,6 +38,9 @@ urlpatterns = [
     path("Singup/", register),
     path("Update/", update_user),
     path("Update_Profile/", update_profile),
+    path("Update_Product/<int:pk>/", update_product),
+    path("Delete_Product/<int:pk>/", ProductDeleteView.as_view(), name="delete_product"),
+    
 
     
 ] + static(MEDIA_URL, document_root = MEDIA_ROOT)

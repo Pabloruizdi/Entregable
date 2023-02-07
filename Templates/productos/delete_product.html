@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Borrado de producto
+{% endblock %}
+
+{% block content %}
+    <h2>Producto que desesa borrar: {{product.name}}</h2>
+    <p>seguro que desea borrar el producto?</p>
+
+    <form action="" method="POST" >
+        {% csrf_token %}
+        <input type="submit" value="Borrar">
+    </form>
+{% endblock %}

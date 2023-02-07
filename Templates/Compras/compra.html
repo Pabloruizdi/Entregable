@@ -5,30 +5,30 @@
 {% endblock %}
 
 {% block content %}
-    <h1>compra tu  producto</h1>
-{% if request.user.is_authenticated %}
-    {% if form %}
-
-        <form action="" method="post">
-
-            {% csrf_token %}
-
-            <table>
-                {{form.as_table}}
-            </table>
-
-
-            <input type="submit" value="Gracias por tu compra" >
-        </form>
-    {% endif %}
-{% endif %}
-
-{% if message %}
-    <h2 style="color: green;" >{{message}}</h2>
-{% endif %}
-
-
-
-
-
+<div class="container-form" style="width: 100%;
+max-width: 1100px;
+margin: auto;
+display: grid;
+grid-template-columns: repeat(2,1fr);
+grid-gap: 50px;
+margin-top: 90px;">
+    <div class="info-form">
+        <h2>Contáctanos para realizar tu compra</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui eligendi est voluptates quae ipsam eius, in quasi odio porro aut vel beatae aperiam.</p>
+        <a href="#"><i class="fa fa-phone"></i> 123-456-789</a>
+        <br>
+        <a href="#"><i class="fa fa-envelope"></i> pablovruizdiaz@gmail.com</a>
+        <br>
+        <a href="https://www.instagram.com/ruizdiazpablo_/"><i class="fa fa-map-marked"></i> Instagram</a>
+    </div>
+    <form action="#" autocomplete="off">
+        <input type="text" name="nombre" placeholder="Tu Nombre" class="campo">
+        <br>
+        <input type="emal" name="email" placeholder="Tu Email" class="campo">
+        <br>
+        <textarea name="mensaje" placeholder="Tu Mensaje..."></textarea>
+        <br>
+        <input type="submit" name="enviar" value="Enviar Mensaje" class="btn-enviar">
+    </form>
+</div>
 {% endblock %}
